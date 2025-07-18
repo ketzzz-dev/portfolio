@@ -1,0 +1,39 @@
+.description {
+    margin: 1rem 0;
+    padding: 0 1rem;
+    text-indent: 2ch;
+}
+
+.description strong {
+    font-weight: 700;
+}
+
+.links {
+    margin: 1rem 0;
+    padding: 0 1rem;
+
+    display: flex;
+    gap: 1rem;
+}
+
+.skills-container {
+    margin: 1rem 0;
+    padding: 0 1rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.projects-list {
+    padding: 0 1rem;
+
+    display: flex;
+    gap: 1rem;
+}
+
+.projects-list .project {
+    width: 100%;
+}
+

@@ -1,0 +1,16 @@
+.skills-section {
+    flex-basis: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills-list {
+    padding: 0 1rem;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
