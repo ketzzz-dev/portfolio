@@ -1,46 +1,80 @@
 nav {
-    padding: 0.5rem 0;
-
-    display: flex;
-    justify-content: center;
-
-    background-color: #11111b;
-    backdrop-filter: blur(6px);
-
-    position: fixed;
-
-    width: 100%;
-}
-
-.navbar-container {
-    padding: 0 2rem;
+    padding: 0.5rem 2rem;
 
     display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 0.5rem;
 
-    width: 100%;
-    max-width: 1280px;
+    position: fixed;
+
+    width: min(85%, 1080px);
+}
+
+nav::before {
+    content: "";
+    z-index: -1;
+
+    position: absolute;
+    top: 0;
+    left: calc(50% - 50vw);
+
+    width: 100vw;
+    height: 100%;
+    
+    background: #11111b;
 }
 
 .page {
     padding: 0.5rem 1rem;
 
+    position: relative;
+
     color: #a6adc8;
-    font-size: 1.2rem;
 
-    border-bottom: 2px solid transparent;
+    transition: color 250ms ease-out;
+}
 
-    transition: color 0.25s ease-out, border-bottom 0.25s ease-out;
+.page::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    opacity: 0;
+    background: #a6adc8;
+
+    transition: opacity 250ms ease-out, background 250ms ease-out, font-weight 250ms ease-out;
 }
 
 .page:hover {
     color: #cdd6f4;
-    border-bottom: 2px solid #cdd6f4;
+}
+
+.page:hover::after {
+    opacity: 1;
+    background: #cdd6f4;
+}
+
+.page:active {
+    color: #f38ba8;
+}
+
+.page:active::after {
+    opacity: 1;
+    background: #f38ba8;
 }
 
 .page.active {
     color: #f38ba8;
-    border-bottom: 2px solid #f38ba8;
+    font-weight: 700;
+}
+
+.page.active::after {
+    opacity: 1;
+    background: #f38ba8;
 }

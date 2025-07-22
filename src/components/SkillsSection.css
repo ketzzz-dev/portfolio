@@ -1,6 +1,6 @@
 .skills-section {
-    flex-basis: 100%;
-    
+    flex-basis: 33% ;
+
     display: flex;
     flex-direction: column;
     align-items: center;

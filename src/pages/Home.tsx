@@ -63,14 +63,14 @@ export default function Home() {
         
         <main>
             <section class="hero">
-                <h1>Hi, I'm Lucas</h1>
+                <h1>Hey, I'm Lucas!</h1>
                 
                 <p class="description">
-                    {"\t"}I'm known online as <strong>Ketzzz</strong>,
+                    {"\t"}I'm also known online as <strong>Ketzzz</strong>,
                     and I'm an 18-year-old Computer Science student with over 5 years of programming experience and a strong passion for game development.
                 </p>
                 <p class="description">
-                    {"\t"}I primarily work with <strong>Unity</strong> and <strong>Godot</strong>,
+                    {"\t"}I primarily work with <strong>Godot</strong> and <strong>Unity</strong>,
                     and I'm currently diving into the <strong>Rust</strong> ecosystem with the <strong>Bevy</strong> game engine.
                     On the side, I occasionally explore <strong>music production</strong> and <strong>3D modeling</strong>,
                     mixing tech with creativity wherever I can.

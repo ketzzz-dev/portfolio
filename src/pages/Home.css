@@ -1,11 +1,8 @@
 .description {
     margin: 1rem 0;
     padding: 0 1rem;
+    
     text-indent: 2ch;
-}
-
-.description strong {
-    font-weight: 700;
 }
 
 .links {
@@ -13,6 +10,8 @@
     padding: 0 1rem;
 
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -22,7 +21,8 @@
 
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     align-items: flex-start;
 }
 
