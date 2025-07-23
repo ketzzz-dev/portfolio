@@ -3,8 +3,8 @@
 	background: #11111b;
 
 	line-height: 1.5;
-	font-family: "JetBrains Mono", "Helvetica", "Arial", "sans-serif";
-	font-size: clamp(0.8rem, 3vw, 1.2rem);
+	font-family: "JetBrains Mono", "Ubuntu Mono", "monospace";
+	font-size: 1.2rem;
 	font-weight: 300;
 	font-optical-sizing: auto;
 	font-synthesis: none;
@@ -13,7 +13,7 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
-	scrollbar-gutter: stable;
+	scrollbar-gutter: stable both-edges;
 }
 
 body {
@@ -21,7 +21,6 @@ body {
 
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
 	align-items: center;
 	
 	min-width: 360px;
@@ -32,22 +31,29 @@ h1 {
 	font-weight: 800;
 	margin-bottom: 1rem;
 	color: #f38ba8;
-	font-size: clamp(2rem, 10vw, 3rem);
+	font-size: 3rem;
 }
 
 h2 {
 	font-weight: 800;
 	margin-bottom: 1rem;
 	color: #f38ba8;
-	font-size: clamp(1.8rem, 10vw, 2.2rem);
+	font-size: 2.2rem;
 }
 
 h3 {
 	font-weight: 800;
 	margin-bottom: 1rem;
 	color: #cdd6f4;
-	font-size: (1.6rem, 10vw, 1.8rem);
+	font-size: 1.6rem;
 }
+
+p {
+    margin: 1rem 0;
+    padding: 0 1rem;
+    
+    text-indent: 2ch;
+}	
 
 ul {
 	list-style: none;
@@ -63,4 +69,22 @@ strong {
 a {
 	color: #f38ba8;
 	text-decoration: inherit;
+}
+
+@media (max-width: 768px) {
+	:root {
+		font-size: 0.8rem;
+	}
+
+	h1 {
+		font-size: 2.4rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	h3 {
+		font-size: 1.4rem;
+	}
 }

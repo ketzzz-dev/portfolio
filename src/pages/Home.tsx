@@ -23,20 +23,20 @@ import "./Home.css"
 import { onMount } from "solid-js"
 
 const languages: Skill[] = [
-    { name: "C#", icon: csIcon },
     { name: "GDScript", icon: godotIcon },
+    { name: "C#", icon: csIcon },
     { name: "Rust", icon: rustIcon  },
     { name: "C", icon: cIcon },
     { name: "C++", icon: cppIcon },
-    { name: "JavaScript", icon: jsIcon },
     { name: "TypeScript", icon: tsIcon },
+    { name: "JavaScript", icon: jsIcon },
     { name: "HTML", icon: htmlIcon },
     { name: "CSS", icon: cssIcon }
 ]
 const engines: Skill[] = [
-    { name: "Unity", icon: unityIcon },
     { name: "Godot", icon: godotIcon },
-    { name: "Bevy", icon: bevyIcon },
+    { name: "Unity", icon: unityIcon },
+    { name: "Bevy", icon: bevyIcon }
 ]
 const tools: Skill[] = [
     { name: "Node.js", icon: nodeIcon },
@@ -50,12 +50,17 @@ const featuredProjects: Project[] = [
         title: "Fizix",
         description: "A simple yet powerful 3D physics engine built from scratch using Position-Based Dynamics (PBD).",
         link: "https://github.com/ketzzz-dev/fizix"
-    } 
+    },
+    {
+        title: "Lorem",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        link: ""
+    }
 ] 
 
 export default function Home() {
     onMount(() => {
-        document.title = "Ketzzz - Home"
+        document.title = "Ketzzz"
     })
 
     return <>
@@ -65,18 +70,18 @@ export default function Home() {
             <section class="hero">
                 <h1>Hey, I'm Lucas!</h1>
                 
-                <p class="description">
+                <p>
                     {"\t"}I'm also known online as <strong>Ketzzz</strong>,
                     and I'm an 18-year-old Computer Science student with over 5 years of programming experience and a strong passion for game development.
                 </p>
-                <p class="description">
+                <p>
                     {"\t"}I primarily work with <strong>Godot</strong> and <strong>Unity</strong>,
                     and I'm currently diving into the <strong>Rust</strong> ecosystem with the <strong>Bevy</strong> game engine.
                     On the side, I occasionally explore <strong>music production</strong> and <strong>3D modeling</strong>,
                     mixing tech with creativity wherever I can.
                 </p>
-                <p class="description">
-                    {"\t"}This site is my personal hub — a place to share my projects, ideas, and experiments.
+                <p>
+                    {"\t"}This site is my personal hub and a place to share my projects, ideas, and experiments.
                     Take a look around, and feel free to reach out if you're curious, interested, or just want to talk shop!
                 </p>
 
@@ -89,9 +94,9 @@ export default function Home() {
             <section class="featured-projects">
                 <h2>Featured Projects</h2>
 
-                <ul class="projects-list">
-                    {featuredProjects.map((project) => <li class="project"><ProjectCard project={project} /></li>)}
-                </ul>
+                <div class="projects-container">
+                    {featuredProjects.map((project) => <ProjectCard project={project} />)}
+                </div>
             </section>
 
             <section class="technical-skills">
@@ -106,7 +111,13 @@ export default function Home() {
 
             <section class="contact">
                 <h2>Contact Me</h2>
-                
+                <p>
+                    Got questions, want to collaborate, or just feel like chatting? I'm always open to talk.
+                </p>
+
+                <div class="contact-links">
+                    
+                </div>            
             </section>
         </main>
     </>

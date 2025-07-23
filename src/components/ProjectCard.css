@@ -1,13 +1,32 @@
 .project-card {
-    margin: 1rem 0;
-    padding: 1rem;
+    padding: 1rem 0;
 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    
-    background-color: #1e1e2e;
+    align-items: center;
 
-    border: 2px solid #cdd6f4;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
+
+    color: #bac2de;
+    background: #1e1e2e;
+
+    transition: background 250ms ease-out;
+}
+
+.project-card h3 {
+    margin: 0;
+
+    transition: color 250ms ease-out;
+}
+
+.project-card p {
+    margin: 0;  
+}
+
+.project-card:hover {
+    background: #313244;
+}
+
+.project-card:hover h3 {
+    color: #f38ba8;
 }

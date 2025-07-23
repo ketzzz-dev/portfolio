@@ -48,7 +48,10 @@ nav::before {
     opacity: 0;
     background: #a6adc8;
 
-    transition: opacity 250ms ease-out, background 250ms ease-out, font-weight 250ms ease-out;
+    transition: 
+        opacity 250ms ease-out,
+        background 250ms ease-out,
+        font-weight 250ms ease-out;
 }
 
 .page:hover {

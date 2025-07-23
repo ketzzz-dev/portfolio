@@ -11,17 +11,19 @@ const projects: Project[] = [
     },
     {
         title: "Lorem",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        link: ""
     },
     {
         title: "Lorem",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        link: ""
     }
 ]
 
 export default function Projects() {
     onMount(() => {
-        document.title = "Ketzzz - Projects"
+        document.title = "Ketzzz • Projects"
     })
 
     return <>
@@ -30,7 +32,10 @@ export default function Projects() {
         <main>
             <section>
                 <h2>Projects</h2>
-                {projects.map(project => <ProjectCard project={project} />)}
+
+                <div class="projects">
+                    {projects.map(project => <ProjectCard project={project} />)}
+                </div>
             </section>
         </ main>
     </>

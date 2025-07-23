@@ -1,5 +1,5 @@
 .skills-section {
-    flex-basis: 33% ;
+    flex-basis: min(33%, 100vw);
 
     display: flex;
     flex-direction: column;
