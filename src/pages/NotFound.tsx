@@ -1,6 +1,5 @@
 import { onCleanup, onMount } from "solid-js"
 import { useNavigate } from "@solidjs/router"
-import Navbar from "../components/Navbar"
 import AButton from "../components/AButton"
 import "./NotFound.css"
 
@@ -22,7 +21,7 @@ export default function NotFound() {
 
     return <>
         <section class="not-found">
-            <h2>404 - Page not found</h2    >
+            <h2>404 - Page not found</h2>
             <h3>Well... this wasn't the page you were looking for.</h3>
 
             <p>Sending you back home before things get weird. Press the button if nothing happens.</p>
