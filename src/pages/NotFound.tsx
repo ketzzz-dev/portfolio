@@ -1,7 +1,8 @@
-import Navbar from "../components/Navbar"
-import AButton from "../components/AButton"
 import { onCleanup, onMount } from "solid-js"
 import { useNavigate } from "@solidjs/router"
+import Navbar from "../components/Navbar"
+import AButton from "../components/AButton"
+import "./NotFound.css"
 
 export default function NotFound() {
     const navigate = useNavigate()
@@ -23,12 +24,14 @@ export default function NotFound() {
         <Navbar />
 
         <main>
-            <h1>404</h1>
+            <section class="not-found">
+                <h2>404 - Page not found</h2    >
+                <h3>Well... this wasn't the page you were looking for.</h3>
 
-            <p>Well... this isn't the page you were looking for.</p>
-            <p>Redirecting you home before things get weird. Press the button if nothing happens.</p>
+                <p>Sending you back home before things get weird. Press the button if nothing happens.</p>
 
-            <AButton href="/">Go back</AButton>
+                <AButton href="/">Go back</AButton>
+            </section>
         </main>
     </>
 }
