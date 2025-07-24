@@ -21,17 +21,13 @@ export default function NotFound() {
     })
 
     return <>
-        <Navbar />
+        <section class="not-found">
+            <h2>404 - Page not found</h2    >
+            <h3>Well... this wasn't the page you were looking for.</h3>
 
-        <main>
-            <section class="not-found">
-                <h2>404 - Page not found</h2    >
-                <h3>Well... this wasn't the page you were looking for.</h3>
+            <p>Sending you back home before things get weird. Press the button if nothing happens.</p>
 
-                <p>Sending you back home before things get weird. Press the button if nothing happens.</p>
-
-                <AButton href="/">Go back</AButton>
-            </section>
-        </main>
+            <AButton href="/">Go back</AButton>
+        </section>
     </>
 }

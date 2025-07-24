@@ -1,5 +1,4 @@
-import { onMount } from "solid-js"
-import Navbar from "../components/Navbar"
+import { onMount, type Component } from "solid-js"
 import ProjectCard, { type Project } from "../components/ProjectCard"
 import "./Projects.css"
 
@@ -21,22 +20,20 @@ const projects: Project[] = [
     }
 ]
 
-export default function Projects() {
+const Projects: Component = () => {
     onMount(() => {
         document.title = "Ketzzz • Projects"
     })
 
     return <>
-        <Navbar />
-        
-        <main>
-            <section>
-                <h2>Projects</h2>
+        <section>
+            <h2>Projects</h2>
 
-                <div class="projects">
-                    {projects.map(project => <ProjectCard project={project} />)}
-                </div>
-            </section>
-        </ main>
+            <div class="projects">
+                {projects.map(project => <ProjectCard project={project} />)}
+            </div>
+        </section>
     </>
 }
+
+export default Projects

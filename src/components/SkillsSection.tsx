@@ -1,7 +1,13 @@
+import type { Component } from "solid-js"
 import SkillBadge, { type Skill } from "./SkillBadge"
 import "./SkillsSection.css"
 
-export default function SkillsSection({ title, skills }: { title: string, skills: Skill[] }) {
+export interface SkillSectionProps {
+    title: string
+    skills: Skill[]
+}
+
+const SkillsSection: Component<SkillSectionProps> = ({ title, skills }) => {
     return <div class="skills-section">
         <h3>{title}</h3>
         <ul class="skills-list">
@@ -9,3 +15,5 @@ export default function SkillsSection({ title, skills }: { title: string, skills
         </ul>
     </div>
 }
+
+export default SkillsSection
