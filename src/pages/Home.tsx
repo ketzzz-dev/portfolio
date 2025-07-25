@@ -19,7 +19,8 @@ import htmlIcon from "../assets/icons/html.svg"
 import cssIcon from "../assets/icons/css.svg"
 import gitIcon from "../assets/icons/git.svg"
 import "./Home.css"
-import { onMount, type Component } from "solid-js"
+import { type Component } from "solid-js"
+import { useSetPageTitle } from "../hooks/usePageTitle"
 
 const languages: Skill[] = [
     { name: "GDScript", icon: godotIcon },
@@ -58,9 +59,7 @@ const featuredProjects: Project[] = [
 ]
 
 const Home: Component = () => {
-    onMount(() => {
-        document.title = "Ketzzz"
-    })
+    useSetPageTitle()
 
     return <>
         <section class="hero">

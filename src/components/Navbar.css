@@ -9,6 +9,8 @@ nav {
     position: fixed;
 
     width: min(85%, 1080px);
+
+    z-index: 1;
 }
 
 nav::before {

@@ -2,15 +2,16 @@ import { onCleanup, onMount } from "solid-js"
 import { useNavigate } from "@solidjs/router"
 import AButton from "../components/AButton"
 import "./NotFound.css"
+import { useSetPageTitle } from "../hooks/usePageTitle"
 
 export default function NotFound() {
     const navigate = useNavigate()
 
     let timeout: number
 
-    onMount(() => {
-        document.title = "Ketzzz • 404"
+    useSetPageTitle("404")
 
+    onMount(() => {
         timeout = setTimeout(() => {
             navigate("/")
         }, 5000)

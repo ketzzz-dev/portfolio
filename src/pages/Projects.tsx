@@ -1,6 +1,7 @@
-import { onMount, type Component } from "solid-js"
+import { type Component } from "solid-js"
 import ProjectCard, { type Project } from "../components/ProjectCard"
 import "./Projects.css"
+import { useSetPageTitle } from "../hooks/usePageTitle"
 
 const projects: Project[] = [
     {
@@ -21,9 +22,7 @@ const projects: Project[] = [
 ]
 
 const Projects: Component = () => {
-    onMount(() => {
-        document.title = "Ketzzz • Projects"
-    })
+    useSetPageTitle("Projects")
 
     return <>
         <section>

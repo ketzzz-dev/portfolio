@@ -1,18 +1,18 @@
-import { Suspense, type ParentProps } from "solid-js"
+import { Suspense, type ParentComponent } from "solid-js"
 import Navbar from "../components/Navbar"
+import "./MainLayout.css"
+import Loading from "../components/Loading"
 
+const MainLayout: ParentComponent = ({ children }) => <>   
+    <Navbar />
+    
+    <main>
+        <Suspense fallback={<Loading />}>
+            {children}
+        </Suspense>
+    </main>
 
+    {/* Footer would go here */}
+</>
 
-export default function MainLayout(props: ParentProps) {
-    return <>
-        <Navbar />
-        
-        <main>
-            <Suspense fallback={<h3>Loading...</h3>}>
-                {props.children}
-            </Suspense>
-        </main>
-
-        {/* Footer would go here */}
-    </>
-}
+export default MainLayout
