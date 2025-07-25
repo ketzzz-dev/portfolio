@@ -1,7 +1,6 @@
 import { Suspense, type ParentComponent } from "solid-js"
-import Navbar from "../components/Navbar"
-import "./MainLayout.css"
 import Loading from "../components/Loading"
+import Navbar from "../components/Navbar"
 
 const MainLayout: ParentComponent = ({ children }) => <>   
     <Navbar />

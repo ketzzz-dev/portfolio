@@ -1,0 +1,28 @@
+@use '../abstracts/variables' as *;
+
+.skill-badge {
+    padding: 0.25rem 0.5rem;
+
+    color: $color-text-muted;
+    font-weight: 400;
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid $color-text-muted;  
+    border-radius: 0.5rem;
+
+    transition: all 250ms ease-out;
+
+    & .icon {
+        margin-right: 0.5rem;
+
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    &:hover {
+        color: $color-accent-primary;
+        border-color: $color-accent-primary;
+    }
+}

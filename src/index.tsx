@@ -1,5 +1,5 @@
 import { render } from "solid-js/web"
 import App from "./App"
-import "./index.css"
+import "./styles/main.scss"
 
 render(() => <App />, document.body)

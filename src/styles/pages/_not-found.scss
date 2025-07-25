@@ -4,12 +4,12 @@
     align-items: center;
 
     text-align: center;
-}
 
-.not-found h2 {
-    margin-bottom: 0;
-}
+    & h2 {
+        margin-bottom: 0;
+    }
 
-.not-found h3 {
-    margin-top: 0;
+    & h3 {
+        margin-top: 0
+    };
 }

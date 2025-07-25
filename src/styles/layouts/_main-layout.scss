@@ -1,0 +1,29 @@
+@use '../abstracts/variables' as *;
+
+main {
+    position: relative;
+
+    padding: 4rem 2rem;
+
+    width: min(85%, 1080px);
+    min-height: calc(100vh - 8rem);
+}
+
+main::before {
+    content: '';
+
+    position: absolute;
+    z-index: -1;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: $color-bg-secondary;
+}
+
+section {
+    padding: 1rem 0;
+}

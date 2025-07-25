@@ -1,8 +1,8 @@
 import { onCleanup, onMount } from "solid-js"
 import { useNavigate } from "@solidjs/router"
 import AButton from "../components/AButton"
-import "./NotFound.css"
 import { useSetPageTitle } from "../hooks/usePageTitle"
+// import "./NotFound.css"
 
 export default function NotFound() {
     const navigate = useNavigate()

@@ -1,14 +1,5 @@
 import type { Component } from "solid-js"
-import "./SkillBadge.css"
-
-export interface Skill {
-    name: string
-    icon?: string
-}
-
-export interface SkillBadgeProps {
-    skill: Skill
-}
+import type { SkillBadgeProps } from "../types"
 
 const SkillBadge: Component<SkillBadgeProps> = ({ skill: { name, icon } }) => <>
     <div class="skill-badge">

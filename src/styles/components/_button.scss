@@ -1,0 +1,45 @@
+@use '../abstracts/variables' as *;
+
+.button {
+	padding: 0.5rem 1rem;
+
+	display: flex;
+	align-items: center;
+
+	width: max-content;
+
+	color: $color-text-light;
+	background: $color-button;
+
+	border-radius: 0.5rem;
+
+	transition: all 250ms ease-out;
+
+	& .icon {
+		margin-right: 0.5rem;
+
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
+	& .arrow {
+		margin-left: 0.5rem;
+
+		width: 1.5rem;
+		height: 1.5rem;
+
+		transition: all 250ms ease-out;
+	}
+
+	&:hover {
+		background: $color-button-hover;
+
+		& .arrow {
+			transform: translateX(0.25rem);
+		}
+	}
+
+	&:active {
+		background: $color-button-active;
+	}
+}

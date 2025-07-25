@@ -1,13 +1,9 @@
-import { A, type AnchorProps } from "@solidjs/router"
+import { A } from "@solidjs/router"
 import type { FlowComponent } from "solid-js"
+import type { AButtonProps } from "../types"
 import rightArrow from "../assets/right-arrow.svg"
-import "./Button.css"
 
-export interface AButtonProps {
-    icon?: string
-}
-
-const AButton: FlowComponent<AButtonProps & AnchorProps> = ({ icon, children, ...props }) => <>
+const AButton: FlowComponent<AButtonProps> = ({ icon, children, ...props }) => <>
     <A class="button" {...props}>
         {icon && <img class="icon" src={icon} alt="Button Icon" />}
         {children}

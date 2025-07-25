@@ -1,0 +1,55 @@
+@use '../abstracts/variables' as *;
+
+:root {
+    color: $color-text;
+    background: $color-bg-primary;
+
+    line-height: 1.5;
+    
+    font-family: 'JetBrains Mono', 'Ubuntu Mono' 'Courier New', 'Courier', 'monospace';
+    font-size: 18px;
+    font-weight: 400;
+    font-optical-sizing: auto;
+    font-synthesis: none;
+
+    text-rendering: optimizeLegibility;
+    
+    scrollbar-gutter: stable both-edges;
+}
+
+h1, h2, h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+
+    font-weight: 800;
+}
+
+h1 {
+    font-size: 3rem;
+    color: $color-accent-primary;
+}
+
+h2 {
+    font-size: 2.2rem;
+    color: $color-accent-primary;
+}
+
+h3 {
+    font-size: 1.6rem;
+    color: $color-text-light;
+}
+
+p {
+    margin: 1rem 0;
+    text-indent: 2ch;
+}
+
+strong {
+    color: $color-text-light;
+    font-weight: 700;
+}
+
+a {
+    color: $color-accent-primary;
+    text-decoration: inherit;
+}

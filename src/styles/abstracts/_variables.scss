@@ -1,0 +1,90 @@
+// // 1. Color System
+// $colors: (
+//     // Base colors
+//     'bg': #11111b,
+//     'bg-secondary': #181825,
+//     'bg-tertiary': #1e1e2e,
+//     'bg-card': #313244,
+
+//     // Text colors
+//     'text': #bac2de,
+//     'text-light': #cdd6f4,
+//     'text-muted': #a6adc8,
+
+//     // Accent colors
+//     'primary': #f38ba8,
+//     'primary-dark': #ed8796,
+//     'accent': #89b4fa,
+//     'danger': #f38ba8,
+
+//     // Specials
+//     'border': #45475a,
+//     'highlight': #585b70
+// );
+
+$color-bg-primary: #11111b;
+$color-bg-secondary: #181825;
+$color-bg-tertiary: #1e1e2e;
+
+$color-text: #bac2de;
+$color-text-light: #cdd6f4;
+$color-text-muted: #a6adc8;
+
+$color-button: #313244;
+$color-button-hover: #45475a;
+$color-button-active: #585b70;
+
+$color-accent-primary: #f38ba8;
+
+// // 2. Typography
+// $typography: (
+//     'text-base': 1rem,
+//     'text-sm': 0.875rem,
+//     'text-lg': 1.125rem,
+
+//     'line-height': 1.5,
+//     'line-height-tight': 1.25
+// );
+
+// // 3. Spacing System
+// $spacing: (
+//     '0': 0,
+//     '1': 0.25rem,
+//     '2': 0.5rem,
+//     '3': 1rem,
+//     '4': 1.5rem,
+//     '5': 2rem,
+//     '6': 3rem,
+//     'auto': auto
+// );
+
+// // 4. Border
+// $borders: (
+//     'radius-sm': 0.25rem,
+//     'radius-md': 0.5rem,
+//     'radius-lg': 1rem,
+//     'width': 1px
+// );
+
+// // 5. Shadows
+// $shadows: (
+//     'sm': 0 1px 2px 0 rgba(0, 0, 0, 0.05),
+//     'md': 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+//     'lg': 0 10px 15px -3px rgba(0, 0, 0, 0.1)
+// );
+
+// // 6. Breakpoints
+// $breakpoints: (
+//     'xs': 360px,
+//     'sm': 480px,
+//     'md': 768px,
+//     'lg': 1024px,
+//     'xl': 1280px
+// );
+
+// // 7. Transitions
+// $transitions: (
+//     'fast': 150ms ease-out,
+//     'normal': 250ms ease-out,
+//     'slow': 400ms ease-out
+// );

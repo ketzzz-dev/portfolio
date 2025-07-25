@@ -1,5 +1,4 @@
-import { onMount, type Component } from "solid-js";
-import "./Loading.css"
+import { onMount, type Component } from "solid-js"
 
 const Loading: Component = () => {
     onMount(() => {
