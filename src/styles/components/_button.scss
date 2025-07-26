@@ -15,14 +15,14 @@
 
 	transition: all 250ms ease-out;
 
-	& .icon {
+	.icon {
 		margin-right: 0.5rem;
 
 		width: 1.5rem;
 		height: 1.5rem;
 	}
 
-	& .arrow {
+	.arrow {
 		margin-left: 0.5rem;
 
 		width: 1.5rem;
@@ -34,7 +34,7 @@
 	&:hover {
 		background: $color-button-hover;
 
-		& .arrow {
+		.arrow {
 			transform: translateX(0.25rem);
 		}
 	}

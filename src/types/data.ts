@@ -31,4 +31,4 @@ export interface SkillGroup {
 export interface ProjectGroup {
     category: string
     projects: Project[]
-}   
+}

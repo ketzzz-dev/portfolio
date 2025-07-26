@@ -1,6 +1,7 @@
 import { Suspense, type ParentComponent } from "solid-js"
 import Loading from "../components/Loading"
 import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 const MainLayout: ParentComponent = ({ children }) => <>   
     <Navbar />
@@ -11,7 +12,7 @@ const MainLayout: ParentComponent = ({ children }) => <>
         </Suspense>
     </main>
 
-    {/* Footer would go here */}
+    <Footer />
 </>
 
 export default MainLayout

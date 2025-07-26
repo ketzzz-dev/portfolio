@@ -3,7 +3,7 @@ import { useSetPageTitle } from "../hooks/usePageTitle"
 import AButton from "../components/AButton"
 import ProjectCard from "../components/ProjectCard"
 import SkillsList from "../components/SkillsList"
-import githubIcon from "../assets/github.svg"
+import githubIcon from "../assets/icons/github.svg"
 import { featuredProjects } from "../data/projects"
 import { languages, engines, tools } from "../data/skills"
 
@@ -58,10 +58,6 @@ const Home: Component = () => {
             <p>
                 Got questions, want to collaborate, or just feel like chatting? I'm always open to talk.
             </p>
-
-            <div class="contact-links">
-
-            </div>
         </section>
     </>
 }

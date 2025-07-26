@@ -17,7 +17,7 @@ export default function NotFound() {
         }, 5000)
     })
     onCleanup(() => {
-        clearTimeout(timeout)
+        if (timeout) clearTimeout(timeout)
     })
 
     return <>
