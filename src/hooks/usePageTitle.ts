@@ -1,7 +1,7 @@
-import { createEffect } from "solid-js";
+import { createEffect } from 'solid-js'
 
 export function useSetPageTitle(title?: string) {
     createEffect(() => {
-        document.title = title ? title + " • Ketzzz" : "Ketzzz"
+        document.title = title ? title + ' • Ketzzz' : 'Ketzzz'
     })
 }

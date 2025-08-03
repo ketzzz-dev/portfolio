@@ -1,5 +1,5 @@
-import type { Project, Skill } from "./data"
-import type { AnchorProps } from "@solidjs/router"
+import type { Project, Skill } from './data'
+import type { AnchorProps } from '@solidjs/router'
 
 export interface AButtonProps extends AnchorProps {
     icon?: string

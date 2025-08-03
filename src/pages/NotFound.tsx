@@ -9,11 +9,11 @@ export default function NotFound() {
 
     let timeout: number
 
-    useSetPageTitle("404")
+    useSetPageTitle('404')
 
     onMount(() => {
         timeout = setTimeout(() => {
-            navigate("/")
+            navigate('/')
         }, 5000)
     })
     onCleanup(() => {
@@ -21,7 +21,7 @@ export default function NotFound() {
     })
 
     return <>
-        <section class="not-found">
+        <section class='not-found'>
             <h2>404 - Page not found</h2>
             <h3>Well... this wasn't the page you were looking for.</h3>
 

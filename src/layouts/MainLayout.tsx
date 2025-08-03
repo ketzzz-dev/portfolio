@@ -1,10 +1,10 @@
-import { Suspense, type ParentComponent } from "solid-js"
-import Loading from "../components/Loading"
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
+import { Suspense, type ParentComponent } from 'solid-js'
+import Loading from '../components/Loading'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const MainLayout: ParentComponent = ({ children }) => <>   
-    <Navbar />
+    <Header />
     
     <main>
         <Suspense fallback={<Loading />}>

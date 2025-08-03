@@ -1,11 +1,11 @@
-import { onMount, type Component } from "solid-js"
+import { onMount, type Component } from 'solid-js'
 
 const Loading: Component = () => {
     onMount(() => {
-        console.log("Loading...")
+        console.log('Loading...')
     })
 
-    return <div class="loading-container">
+    return <div class='loading-container'>
         <h3>Loading awesome content...</h3>
     </div>
 }

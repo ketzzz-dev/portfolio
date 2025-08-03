@@ -54,6 +54,10 @@ a {
     text-decoration: inherit;
 }
 
+button {
+    font: inherit;
+}
+
 @media (max-width: 768px) {
     :root {
         font-size: 14px;

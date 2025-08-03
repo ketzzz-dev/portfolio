@@ -18,8 +18,8 @@ export interface Skill {
     // id: string
     name: string
     icon?: string
-    category: "language" | "engine" | "tool"
-    proficiency?: 1 | 2 | 3 | 4 | 5  // 1-5 rating
+    category: 'language' | 'engine' | 'tool'
+    proficiency: 1 | 2 | 3 | 4 | 5  // 1-5 rating
     yearsOfExperience?: number
 }
 
