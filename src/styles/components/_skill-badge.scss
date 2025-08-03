@@ -37,32 +37,7 @@
         background: $color-bg-tertiary;
         border-radius: 0.5rem;
         
-        z-index: 100;
-
-        .proficiency-bar {
-            height: 1rem;
-            background: $color-button-hover;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-            margin: 0.5rem 0;
-
-            .progress {
-                height: 100%;
-                background: $color-accent-primary;
-                border-radius: 4px;
-            }
-        }
-
-        .experience {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .label {
-            font-size: 0.75rem;
-            color: $color-text-muted;
-        }
+        z-index: 100;   
     }
 
     &:hover {
