@@ -46,7 +46,7 @@ const Home: Component = () => {
 
         <section class='technical-skills'>
             <h2>Technical Skills</h2>
-            <p>Click on a skill to see more about them!</p>
+            <p>Hover over a skill to see my proficiency!</p>
 
             <div class='skills-container'>
                 <SkillsList title='Languages' skills={languages} />

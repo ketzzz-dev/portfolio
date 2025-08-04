@@ -25,19 +25,44 @@
 
     .skill-details {
         position: absolute;
+        z-index: 100;
 
         top: calc(100% + 10px);
         left: 50%;
 
         transform: translateX(-50%);
 
-        width: 8rem;
+        display: none;
 
+        min-width: 10rem;
         padding: 0.75rem;
+
         background: $color-bg-tertiary;
         border-radius: 0.5rem;
-        
-        z-index: 100;   
+
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        text-align: center;
+
+        .label {
+            color: $color-text-muted;
+        }
+        .stars {
+            color: $color-accent-primary;
+        }
+
+        &::before {
+            content: '';
+
+            position: absolute;
+
+            bottom: 100%;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            border: 6px solid transparent;
+            border-bottom-color: $color-bg-tertiary;
+        }
     }
 
     &:hover {
@@ -45,5 +70,11 @@
         background: transparent;
 
         border-color: $color-accent-primary;
+
+        .skill-details {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
     }
 }

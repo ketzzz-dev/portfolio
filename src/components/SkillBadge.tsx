@@ -1,23 +1,19 @@
-import { createSignal, Show, type Component } from 'solid-js'
+import { type Component } from 'solid-js'
 import type { SkillBadgeProps } from '../types/component'
 
-const SkillBadge: Component<SkillBadgeProps> = ({ skill: { name, icon, proficiency, yearsOfExperience } }) => {
-    const [showDetails, setShowDetails] = createSignal(false)
+const SkillBadge: Component<SkillBadgeProps> = ({ skill: { name, icon, proficiency } }) => {
+    const getStars = (proficiency: number) => {
+        return '★'.repeat(proficiency) + '☆'.repeat(5 - proficiency)
+    }
 
-    return <button
-        class='button skill-badge'
-
-        onMouseDown={() => setShowDetails(prev => !prev)}
-        // onMouseLeave={() => setShowDetails(false)}
-    >
+    return <button class='button skill-badge'>
         {icon && <img class='icon' src={icon} alt='Button Icon' />}
         {name}
 
-        <Show when={showDetails()}>
-            <div class='skill-details'>
-                
-            </div>
-        </Show>
+        <div class="skill-details">
+            <span class="label">Proficiency</span>
+            <span class="stars">{getStars(proficiency)}</span>
+        </div>
     </button>
 }
 
