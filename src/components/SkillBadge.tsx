@@ -6,15 +6,15 @@ const SkillBadge: Component<SkillBadgeProps> = ({ skill: { name, icon, proficien
         return '★'.repeat(proficiency) + '☆'.repeat(5 - proficiency)
     }
 
-    return <button class='button skill-badge'>
-        {icon && <img class='icon' src={icon} alt='Button Icon' />}
+    return <div class='skill-badge'>
+        {icon && <img class='icon' src={icon} alt='Icon' />}
         {name}
 
         <div class="skill-details">
             <span class="label">Proficiency</span>
             <span class="stars">{getStars(proficiency)}</span>
         </div>
-    </button>
+    </div>
 }
 
 export default SkillBadge

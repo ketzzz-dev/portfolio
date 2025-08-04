@@ -6,6 +6,7 @@ import SkillsList from '../components/SkillsList'
 import githubIcon from '../assets/icons/github.svg'
 import { featuredProjects } from '../data/projects'
 import { languages, engines, tools } from '../data/skills'
+// import ContactForm from '../components/ContactForm'
 
 const Home: Component = () => {
     useSetPageTitle()
@@ -55,12 +56,12 @@ const Home: Component = () => {
             </div>
         </section>
 
-        <section class='contact'>
+        {/* <section class='contact'>
             <h2>Contact Me</h2>
-            <p>
-                Got questions, want to collaborate, or just feel like chatting? I'm always open to talk.
-            </p>
-        </section>
+            <p>Got questions, want to collaborate, or just feel like chatting? I'm always open to talk.</p>
+
+            <ContactForm />
+        </section> */}
     </>
 }
 

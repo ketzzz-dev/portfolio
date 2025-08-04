@@ -14,6 +14,8 @@
     border: 1px solid $color-text-muted;
     border-radius: 0.5rem;
 
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+
     transition: all 250ms ease-out;
 
     .icon {
@@ -40,7 +42,7 @@
         background: $color-bg-tertiary;
         border-radius: 0.5rem;
 
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
         text-align: center;
 
         .label {
@@ -67,7 +69,7 @@
 
     &:hover {
         color: $color-accent-primary;
-        background: transparent;
+        background: rgba($color-accent-primary, 0.25);
 
         border-color: $color-accent-primary;
 

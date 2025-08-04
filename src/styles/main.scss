@@ -4,10 +4,12 @@
 @use 'base/typography';
 
 @use 'components/button';
+@use 'components/contactform';
 @use 'components/footer';
+@use 'components/header';
+@use 'components/interactive-background';
 @use 'components/loading';
 @use 'components/project-card';
-@use 'components/header';
 @use 'components/skills-list';
 @use 'components/skill-badge';
 

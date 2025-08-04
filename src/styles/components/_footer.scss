@@ -1,8 +1,9 @@
 @use '../abstracts/variables' as *;
 
 .footer {
-    padding: 0 2rem;
-    margin-top: 1rem;
+    position: relative;
+
+    padding: 1rem 2rem 0;
     
     display: flex;
     flex-direction: column;
@@ -14,6 +15,22 @@
     color: $color-text-muted;
     font-size: 0.8rem;
     text-align: center;
+
+    &::after {
+        content: '';
+
+        position: absolute;
+        z-index: -1;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background: rgba($color-bg-tertiary, 0.5);
+        backdrop-filter: blur(0.25rem);
+    }
     
     &::before {
         content: '';

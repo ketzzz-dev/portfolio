@@ -1,0 +1,60 @@
+@use '../abstracts/variables' as *;
+
+.contact-form {
+    margin-top: 2rem;
+    max-width: 600px;
+
+    .form-group {
+        margin-bottom: 1.5rem;
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: $color-text-light;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: $color-bg-tertiary;
+            border: 1px solid $color-button-hover;
+            border-radius: 0.5rem;
+            color: $color-text;
+            font-family: inherit;
+            transition: all 250ms ease-out;
+
+            &:focus {
+                outline: none;
+                border-color: $color-accent-primary;
+                box-shadow: 0 0 0 2px rgba($color-accent-primary, 0.2);
+            }
+
+            &[disabled] {
+                opacity: 0.7;
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    .alert {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        text-align: center;
+
+        &.success {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+
+        &.error {
+            background: rgba(244, 67, 54, 0.2);
+            color: #F44336;
+        }
+    }
+
+    button[type='submit'] {
+        width: 100%;
+        justify-content: center;
+    }
+}

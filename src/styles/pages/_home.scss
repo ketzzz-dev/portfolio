@@ -27,8 +27,9 @@
         margin: 1rem 0;
         padding: 0 1rem;
 
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
@@ -38,6 +39,6 @@
     }
 
     .technical-skills .skills-container {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
 }

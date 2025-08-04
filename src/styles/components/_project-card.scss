@@ -10,7 +10,9 @@
     border-radius: 0.5rem;
 
     color: $color-text;
-    background: $color-button;
+    background: rgba($color-button, 0.5);
+
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
 
     transition: all 250ms ease-out;
 
@@ -25,7 +27,7 @@
     }
 
     &:hover {
-        background: $color-button-hover;
+        background: rgba($color-button-hover, 0.5);
 
         & h3 {
             color: $color-accent-primary;
