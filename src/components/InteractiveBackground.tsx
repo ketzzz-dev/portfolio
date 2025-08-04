@@ -9,7 +9,7 @@ const InteractiveBackground = () => {
 
     let accumulatedTime = 0
     
-    const particleCount = window.innerWidth < 768 ? 50 : 150
+    const particleCount = window.innerWidth < 768 ? 50 : 200
     const fixedDeltaTime = 1 / 60
 
     const init = () => {

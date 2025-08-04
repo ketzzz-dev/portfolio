@@ -1,4 +1,4 @@
-import { K, MOUSE_MASS, F, LINK_DISTANCE, LINK_DISTANCE_SQ, WALL_MASS } from '../data/constants'
+import { K, MOUSE_MASS, F, LINK_DISTANCE_SQ, WALL_MASS } from '../data/constants'
 
 class BackgroundParticles {
     public count: number
@@ -189,10 +189,10 @@ class BackgroundParticles {
                 const distSq = dx * dx + dy * dy;
 
                 if (distSq < LINK_DISTANCE_SQ) {
-                    const dist = Math.sqrt(distSq)
-                    const alpha = 1 - dist / LINK_DISTANCE
+                    const alpha = 1 - distSq / LINK_DISTANCE_SQ
 
                     context.strokeStyle = `rgba(243, 139, 168, ${alpha})`
+
                     context.beginPath()
                     context.moveTo(xi, yi)
                     context.lineTo(this.positionX[j], this.positionY[j])
