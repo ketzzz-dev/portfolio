@@ -11,6 +11,7 @@ const InteractiveBackground = () => {
     
     const particleCount = window.innerWidth < 768 ? 50 : 200
     const fixedDeltaTime = 1 / 60
+    const maxDeltaTime = 1 / 20
 
     const init = () => {
         if (!canvas) return
@@ -37,7 +38,9 @@ const InteractiveBackground = () => {
         if (!context) return
 
         const now = performance.now() * .001
-        const deltaTime = now - lastTime
+        let deltaTime = now - lastTime
+
+        if (deltaTime > maxDeltaTime) deltaTime = maxDeltaTime
 
         lastTime = now
         accumulatedTime += deltaTime
@@ -58,8 +61,6 @@ const InteractiveBackground = () => {
 
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
-
-        
     }
 
     const handleMouseMove = (event: MouseEvent) => {
