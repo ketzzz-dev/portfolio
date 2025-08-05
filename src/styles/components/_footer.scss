@@ -8,9 +8,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     
     width: min(85%, 1080px);
+    height: 9rem;
     
     color: $color-text-muted;
     font-size: 0.8rem;

@@ -90,18 +90,18 @@ class BackgroundParticles {
                 const dx = this.px[j] - xi
                 const dy = this.py[j] - yi
 
-                const distSq = dx * dx + dy * dy
+                const distSq = dx * dx + dy * dy + 1e-6
                 const dist = Math.sqrt(distSq)
                 const inverseDist = 1 / dist
 
                 // Force magnitude
-                const force = 0.5 * (repulsionCoefficient * this.m[i] * this.m[j]) / distSq
+                const force = (repulsionCoefficient * this.m[i] * this.m[j]) / distSq
 
                 // Normalize direction
                 const fx = dx * inverseDist * force
                 const fy = dy * inverseDist * force
 
-                // Apply to both particles (equal and opposite)
+                // Apply to both particles
                 this.fx[i] -= fx
                 this.fy[i] -= fy
 
@@ -115,7 +115,7 @@ class BackgroundParticles {
             const dx = this.px[i] - this.cx
             const dy = this.py[i] - this.cy
 
-            const distSq = dx * dx + dy * dy
+            const distSq = dx * dx + dy * dy + 1e-6
             const dist = Math.sqrt(distSq)
             const inverseDist = 1 / dist
 
@@ -126,7 +126,7 @@ class BackgroundParticles {
             const fy = dy * inverseDist * force
 
             this.fx[i] += fx
-            this.fy[i] += fy
+            this.fy[i] += fy    
         }
 
         // Wall repulsion
@@ -136,20 +136,16 @@ class BackgroundParticles {
 
             const mass = this.m[i]
             const factor = repulsionCoefficient * wallMass * mass
-
-            const leftDist = px
             const rightDist = canvas.width - px
 
-            const leftForce = factor / (leftDist * leftDist)
-            const rightForce = factor / (rightDist * rightDist)
+            const leftForce = factor / (px * px + 1e-6)
+            const rightForce = factor / (rightDist * rightDist + 1e-6)
 
             this.fx[i] += leftForce - rightForce
 
-            const topDist = py
             const bottomDist = canvas.height - py
-
-            const topForce = factor / (topDist * topDist)
-            const bottomForce = factor / (bottomDist * bottomDist)
+            const topForce = factor / (py * py + 1e-6)
+            const bottomForce = factor / (bottomDist * bottomDist + 1e-6)
 
             this.fy[i] += topForce - bottomForce
         }
@@ -165,7 +161,7 @@ class BackgroundParticles {
             const dragForce = dragCoefficient * speedSq * area
 
             // Direction of drag (opposite to velocity)
-            const speed = Math.sqrt(speedSq)
+            const speed = Math.sqrt(speedSq) + 1e-6
             const inverseSpeed = 1 / speed
 
             const dx = this.vx[i] * inverseSpeed

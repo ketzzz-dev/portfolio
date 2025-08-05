@@ -6,13 +6,13 @@ header {
 
     padding: 0 2rem;
 
-    height: 4rem;
-
+    
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
+    
     width: min(85%, 1080px);
+    height: 4rem;
     
     &::before {
         content: '';
