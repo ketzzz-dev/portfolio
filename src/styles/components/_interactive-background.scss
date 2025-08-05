@@ -12,5 +12,5 @@
 
     pointer-events: none;
 
-    background: $color-bg-primary;
+    background: linear-gradient($color-bg-primary, rgba($color-accent-primary, 0.125));
 }

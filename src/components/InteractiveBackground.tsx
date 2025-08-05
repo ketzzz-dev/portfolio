@@ -56,32 +56,36 @@ const InteractiveBackground = () => {
         animationFrameId = requestAnimationFrame(animate)
     }
 
-    const handleResize = () => {
+    const onResize = () => {
         if (!canvas) return
 
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
     }
 
-    const handleMouseMove = (event: MouseEvent) => {
+    const onMouseMove = (event: MouseEvent) => {
         if (!canvas || particles.count < 1) return
 
         // Get mouse position relative to canvas
         const rect = canvas.getBoundingClientRect()
 
-        particles.mouseX = event.clientX - rect.left
-        particles.mouseY = event.clientY - rect.top
+        particles.setMousePosition(
+            event.clientX - rect.left,
+            event.clientY - rect.top
+        ) 
     }
 
-    const handleTouchMove = (event: TouchEvent) => {
+    const onTouchMove = (event: TouchEvent) => {
         if (!canvas || particles.count < 1) return
 
         // Get mouse position relative to canvas
         const rect = canvas.getBoundingClientRect()
 
         for (const touch of event.touches) {
-            particles.mouseX = touch.clientX - rect.left
-            particles.mouseY = touch.clientY - rect.top
+            particles.setMousePosition(
+                touch.clientX - rect.left,
+                touch.clientY - rect.top
+            )   
         }
     }
 
@@ -89,17 +93,17 @@ const InteractiveBackground = () => {
         init()
         animate()
 
-        window.addEventListener('resize', handleResize)
-        window.addEventListener('mousemove', handleMouseMove)
-        window.addEventListener('touchmove', handleTouchMove)
+        window.addEventListener('resize', onResize)
+        window.addEventListener('mousemove', onMouseMove)
+        window.addEventListener('touchmove', onTouchMove)
     })
 
     onCleanup(() => {
         cancelAnimationFrame(animationFrameId)
 
-        window.removeEventListener('resize', handleResize)
-        window.removeEventListener('mousemove', handleMouseMove)
-        window.removeEventListener('touchmove', handleTouchMove)
+        window.removeEventListener('resize', onResize)
+        window.removeEventListener('mousemove', onMouseMove)
+        window.removeEventListener('touchmove', onTouchMove)
     })
 
     return (
