@@ -19,7 +19,7 @@ export default function NotFound() {
     })
 
     return <>
-        <Title>404 • Ketzzz</Title>
+        <Title>Oops | Ketzzz</Title>
 
         <section class='not-found'>
             <h2>404 - Page not found</h2>

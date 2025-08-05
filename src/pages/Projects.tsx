@@ -4,7 +4,7 @@ import { allProjects } from '../data/projects'
 import { Title } from '@solidjs/meta'
 
 const Projects: Component = () => <>
-    <Title>Projects • Ketzzz</Title>
+    <Title>Projects | Ketzzz</Title>
 
     <section>
         <h2>Projects</h2>
