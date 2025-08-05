@@ -35,6 +35,8 @@
         transform: translateX(-50%);
 
         display: none;
+        align-items: center;
+        gap: 0.5rem;
 
         min-width: 10rem;
         padding: 0.75rem;
@@ -75,8 +77,6 @@
 
         .skill-details {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
     }
 }

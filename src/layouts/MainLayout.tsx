@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import InteractiveBackground from '../components/InteractiveBackground'
 
-const MainLayout: ParentComponent = ({ children }) => <>   
+const MainLayout: ParentComponent = ({ children }) => <>
     <Header />
     <InteractiveBackground />
     

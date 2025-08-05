@@ -1,21 +1,29 @@
 class BackgroundParticles {
     public count: number
 
-    private positionX: number[] = []
-    private positionY: number[] = []
+    // Position
+    private px: number[] = []
+    private py: number[] = []
 
-    private velocityX: number[] = []
-    private velocityY: number[] = []
+    // Old position
+    private qx: number[] = []
+    private qy: number[] = []
 
-    private forceX: number[] = []
-    private forceY: number[] = []
+    // Velocity
+    private vx: number[] = []
+    private vy: number[] = []
 
-    private size: number[] = []
-    private mass: number[] = []
-    private inverseMass: number[] = []
+    // Force
+    private fx: number[] = []
+    private fy: number[] = []
 
-    private mouseX = 0
-    private mouseY = 0
+    private r: number[] = [] // Radius
+    private m: number[] = [] // Mass
+    private w: number[] = [] // Inverse mass
+
+    // Cursor position
+    private cx = 0
+    private cy = 0
 
     public constructor(particleCount: number, canvasWidth: number, canvasHeight: number) {
         this.count = particleCount
@@ -27,170 +35,176 @@ class BackgroundParticles {
         const cellWidth = canvasWidth / cols
         const cellHeight = canvasHeight / rows
 
-        let index = 0
+        let i = 0
 
         for (let row = 0; row < rows; row++) {
             for (let col = 0; col < cols; col++) {
-                if (index >= particleCount) break
+                if (i >= this.count) break
 
                 // Jitter factor (random offset inside cell)
-                const jitterX = (Math.random() - 0.5) * cellWidth * 0.75
-                const jitterY = (Math.random() - 0.5) * cellHeight * 0.75
+                const jx = (Math.random() - 0.5) * cellWidth * 0.75
+                const jy = (Math.random() - 0.5) * cellHeight * 0.75
 
-                const positionX = col * cellWidth + cellWidth / 2 + jitterX
-                const positionY = row * cellHeight + cellHeight / 2 + jitterY
+                const px = col * cellWidth + cellWidth / 2 + jx
+                const py = row * cellHeight + cellHeight / 2 + jy
 
-                let velocityX = (Math.random() - 0.5) * 100
-                let velocityY = (Math.random() - 0.5) * 100
+                let vx = (Math.random() - 0.5) * 100
+                let vy = (Math.random() - 0.5) * 100
 
-                let size = 1 + Math.random() * 4
-                let mass = size * size * 50
+                let r = 1 + Math.random() * 4
+                let m = r * r * 75 // Arbitrary size to mass ratio
 
-                this.positionX.push(positionX)
-                this.positionY.push(positionY)
+                this.px.push(px)
+                this.py.push(py)
 
-                this.velocityX.push(velocityX)
-                this.velocityY.push(velocityY)
+                this.qx.push(px)
+                this.qy.push(py)
 
-                this.forceX.push(0)
-                this.forceY.push(0)
+                this.vx.push(vx)
+                this.vy.push(vy)
 
-                this.size.push(size)
-                this.mass.push(mass)
-                this.inverseMass.push(1 / mass)
+                this.fx.push(0)
+                this.fy.push(0)
 
-                index++
+                this.r.push(r)
+                this.m.push(m)
+                this.w.push(1 / m)
+
+                i++
             }
         }
     }
 
     public update(deltaTime: number, canvas: HTMLCanvasElement) {
-        const deltaTimeSq = deltaTime * deltaTime
         const repulsionCoefficient = 100
         const dragCoefficient = 0.05
-        const mouseMass = 3000
+        const cursorMass = 3000
         const wallMass = 600
 
         // Apply repulsion force between all pairs
         for (let i = 0; i < this.count; i++) {
-            const xi = this.positionX[i]
-            const yi = this.positionY[i]
+            const xi = this.px[i]
+            const yi = this.py[i]
 
             for (let j = i + 1; j < this.count; j++) {
-                const dx = this.positionX[j] - xi
-                const dy = this.positionY[j] - yi
+                const dx = this.px[j] - xi
+                const dy = this.py[j] - yi
 
-                let distSq = dx * dx + dy * dy + 1e-6 // epsilon
-                let dist = Math.sqrt(distSq)
+                const distSq = dx * dx + dy * dy
+                const dist = Math.sqrt(distSq)
+                const inverseDist = 1 / dist
 
                 // Force magnitude
-                const force = (repulsionCoefficient * this.mass[i] * this.mass[j]) / distSq
+                const force = 0.5 * (repulsionCoefficient * this.m[i] * this.m[j]) / distSq
 
                 // Normalize direction
-                const fx = (dx / dist) * force
-                const fy = (dy / dist) * force
+                const fx = dx * inverseDist * force
+                const fy = dy * inverseDist * force
 
                 // Apply to both particles (equal and opposite)
-                this.forceX[i] -= fx
-                this.forceY[i] -= fy
+                this.fx[i] -= fx
+                this.fy[i] -= fy
 
-                this.forceX[j] += fx
-                this.forceY[j] += fy
+                this.fx[j] += fx
+                this.fy[j] += fy
             }
         }
 
-        // Mouse repulsion
+        // Cursor repulsion
         for (let i = 0; i < this.count; i++) {
-            const dx = this.positionX[i] - this.mouseX
-            const dy = this.positionY[i] - this.mouseY
+            const dx = this.px[i] - this.cx
+            const dy = this.py[i] - this.cy
 
-            const distSq = dx * dx + dy * dy + 1e-6
+            const distSq = dx * dx + dy * dy
             const dist = Math.sqrt(distSq)
+            const inverseDist = 1 / dist
 
             // Inverse-square repulsion force
-            const force = (repulsionCoefficient * mouseMass * this.mass[i]) / distSq
+            const force = (repulsionCoefficient * cursorMass * this.m[i]) / distSq
 
-            const fx = (dx / dist) * force
-            const fy = (dy / dist) * force
+            const fx = dx * inverseDist * force
+            const fy = dy * inverseDist * force
 
-            this.forceX[i] += fx
-            this.forceY[i] += fy
+            this.fx[i] += fx
+            this.fy[i] += fy
         }
 
         // Wall repulsion
         for (let i = 0; i < this.count; i++) {
-            const x = this.positionX[i]
-            const y = this.positionY[i]
+            const px = this.px[i]
+            const py = this.py[i]
 
-            const mass = this.mass[i]
+            const mass = this.m[i]
             const factor = repulsionCoefficient * wallMass * mass
 
-            const leftDist = x + 1e-6
-            const rightDist = canvas.width - x + 1e-6
+            const leftDist = px
+            const rightDist = canvas.width - px
 
             const leftForce = factor / (leftDist * leftDist)
             const rightForce = factor / (rightDist * rightDist)
 
-            this.forceX[i] += leftForce - rightForce
+            this.fx[i] += leftForce - rightForce
 
-            const topDist = y + 1e-6
-            const bottomDist = canvas.height - y + 1e-6
+            const topDist = py
+            const bottomDist = canvas.height - py
 
             const topForce = factor / (topDist * topDist)
             const bottomForce = factor / (bottomDist * bottomDist)
 
-            this.forceY[i] += topForce - bottomForce
+            this.fy[i] += topForce - bottomForce
         }
 
         // Integration
         for (let i = 0; i < this.count; i++) {
             // Drag
-            let speed = Math.sqrt(this.velocityX[i] * this.velocityX[i] + this.velocityY[i] * this.velocityY[i]) + 1e-6
+            let speedSq = this.vx[i] * this.vx[i] + this.vy[i] * this.vy[i]
 
             // Calculate drag force magnitude
-            const radius = this.size[i]
-            const area = Math.PI * radius * radius
-            const dragForce = dragCoefficient * speed * speed * area
+            const r = this.r[i]
+            const area = Math.PI * r * r
+            const dragForce = dragCoefficient * speedSq * area
 
             // Direction of drag (opposite to velocity)
-            const dragX = -this.velocityX[i] / speed * dragForce
-            const dragY = -this.velocityY[i] / speed * dragForce
+            const speed = Math.sqrt(speedSq)
+            const inverseSpeed = 1 / speed
+
+            const dx = this.vx[i] * inverseSpeed
+            const dy = this.vy[i] * inverseSpeed
 
             // Apply drag to total force
-            this.forceX[i] += dragX
-            this.forceY[i] += dragY
+            this.fx[i] -= dx * dragForce
+            this.fy[i] -= dy * dragForce
 
-            let accelerationX = this.forceX[i] * this.inverseMass[i]
-            let accelerationY = this.forceY[i] * this.inverseMass[i]
+            // Acceleration
+            let ax = this.fx[i] * this.w[i]
+            let ay = this.fy[i] * this.w[i]
 
-            this.forceX[i] = 0
-            this.forceY[i] = 0
+            // Save old position
+            this.qx[i] = this.px[i]
+            this.qy[i] = this.py[i]
 
-            this.velocityX[i] += accelerationX * deltaTime
-            this.velocityY[i] += accelerationY * deltaTime
+            this.fx[i] = 0
+            this.fy[i] = 0
 
-            this.positionX[i] += this.velocityX[i] * deltaTime + 0.5 * accelerationX * deltaTimeSq
-            this.positionY[i] += this.velocityY[i] * deltaTime + 0.5 * accelerationY * deltaTimeSq
+            this.vx[i] += ax * deltaTime
+            this.vy[i] += ay * deltaTime
+
+            this.px[i] += this.vx[i] * deltaTime
+            this.py[i] += this.vy[i] * deltaTime
         }
 
-        // Constraints
+        // Wall Constraints
         for (let i = 0; i < this.count; i++) {
-            if (this.positionX[i] - this.size[i] < 0) {
-                this.positionX[i] = this.size[i]
-                this.velocityX[i] *= -1
-            }
-            if (this.positionX[i] + this.size[i] > canvas.width) {
-                this.positionX[i] = canvas.width - this.size[i]
-                this.velocityX[i] *= -1
-            }
-            if (this.positionY[i] - this.size[i] < 0) {
-                this.positionY[i] = this.size[i]
-                this.velocityY[i] *= -1
-            }
-            if (this.positionY[i] + this.size[i] > canvas.height) {
-                this.positionY[i] = canvas.height - this.size[i]
-                this.velocityY[i] *= -1
-            }
+            this.px[i] = Math.max(this.r[i], Math.min(canvas.width - this.r[i], this.px[i]))
+            this.py[i] = Math.max(this.r[i], Math.min(canvas.height - this.r[i], this.py[i]))
+        }
+
+        // Update Velocity
+        const inverseDeltaTime = 1 / deltaTime
+
+        for (let i = 0; i < this.count; i++) {
+            this.vx[i] = (this.px[i] - this.qx[i]) * inverseDeltaTime
+            this.vy[i] = (this.py[i] - this.qy[i]) * inverseDeltaTime
         }
     }
 
@@ -202,13 +216,13 @@ class BackgroundParticles {
         context.save()
 
         for (let i = 0; i < this.count; i++) {
-            const xi = this.positionX[i];
-            const yi = this.positionY[i];
+            const xi = this.px[i];
+            const yi = this.py[i];
 
             // link particles that are nearby
             for (let j = i + 1; j < this.count; j++) {
-                const dx = this.positionX[j] - xi;
-                const dy = this.positionY[j] - yi;
+                const dx = this.px[j] - xi;
+                const dy = this.py[j] - yi;
 
                 const distSq = dx * dx + dy * dy;
 
@@ -219,7 +233,7 @@ class BackgroundParticles {
 
                     context.beginPath()
                     context.moveTo(xi, yi)
-                    context.lineTo(this.positionX[j], this.positionY[j])
+                    context.lineTo(this.px[j], this.py[j])
                     context.stroke()
                     context.closePath()
                 }
@@ -230,7 +244,7 @@ class BackgroundParticles {
 
         for (let i = 0; i < this.count; i++) {
             context.beginPath()
-            context.arc(this.positionX[i], this.positionY[i], this.size[i], 0, tau)
+            context.arc(this.px[i], this.py[i], this.r[i], 0, tau)
             context.closePath()
             context.fill()
         }
@@ -238,9 +252,9 @@ class BackgroundParticles {
         context.restore()
     }
 
-    public setMousePosition(x: number, y: number): void {
-        this.mouseX = x
-        this.mouseY = y
+    public setCursorPosition(x: number, y: number): void {
+        this.cx = x
+        this.cy = y
     }
 }
 

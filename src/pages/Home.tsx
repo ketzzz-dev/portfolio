@@ -1,17 +1,16 @@
 import type { Component } from 'solid-js'
-import { useSetPageTitle } from '../hooks/usePageTitle'
 import AButton from '../components/AButton'
 import ProjectCard from '../components/ProjectCard'
 import SkillsList from '../components/SkillsList'
 import githubIcon from '../assets/icons/github.svg'
 import { featuredProjects } from '../data/projects'
 import { languages, engines, tools } from '../data/skills'
-// import ContactForm from '../components/ContactForm'
+import { Title } from '@solidjs/meta'
 
 const Home: Component = () => {
-    useSetPageTitle()
-
     return <>
+        <Title>Ketzzz</Title>
+
         <section class='hero'>
             <h1>Hey, I'm Lucas!</h1>
 
@@ -24,7 +23,6 @@ const Home: Component = () => {
                 and I'm also exploring the <strong>Rust</strong> ecosystem with the <strong>Bevy</strong> game engine.
                 On the side, I occasionally explore <strong>music production</strong> and <strong>3D modeling</strong>,
                 mixing tech with creativity wherever I can.
-                
             </p>
             <p>
                 {'\t'}This site is my personal hub and a place to share my projects, ideas, and experiments.

@@ -9,9 +9,9 @@ const InteractiveBackground = () => {
 
     let accumulatedTime = 0
     
-    const particleCount = window.innerWidth < 768 ? 50 : 200
-    const fixedDeltaTime = 1 / 60
-    const maxDeltaTime = 1 / 20
+    const particleCount = window.innerWidth < 768 ? 75 : 200
+    const fixedDeltaTime = window.innerWidth < 768 ? 1 / 50 : 1 / 75
+    const maxDeltaTime = 1 / 12
 
     const init = () => {
         if (!canvas) return
@@ -69,7 +69,7 @@ const InteractiveBackground = () => {
         // Get mouse position relative to canvas
         const rect = canvas.getBoundingClientRect()
 
-        particles.setMousePosition(
+        particles.setCursorPosition(
             event.clientX - rect.left,
             event.clientY - rect.top
         ) 
@@ -78,11 +78,11 @@ const InteractiveBackground = () => {
     const onTouchMove = (event: TouchEvent) => {
         if (!canvas || particles.count < 1) return
 
-        // Get mouse position relative to canvas
+        // Get touch position relative to canvas
         const rect = canvas.getBoundingClientRect()
 
         for (const touch of event.touches) {
-            particles.setMousePosition(
+            particles.setCursorPosition(
                 touch.clientX - rect.left,
                 touch.clientY - rect.top
             )   
