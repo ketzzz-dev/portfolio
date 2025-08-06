@@ -1,5 +1,6 @@
 import { onMount, onCleanup } from 'solid-js'
 import BackgroundParticles from './BackgroundParticles'
+import { debounce, throttle } from '../utils/timing'
 
 const InteractiveBackground = () => {
     let canvas!: HTMLCanvasElement
@@ -10,7 +11,7 @@ const InteractiveBackground = () => {
     let accumulatedTime = 0
     
     const particleCount = window.innerWidth < 768 ? 75 : 200
-    const fixedDeltaTime = 1 / 50
+    const fixedDeltaTime = 1 / 60
     const maxDeltaTime = 1 / 12
 
     const init = () => {
@@ -51,19 +52,21 @@ const InteractiveBackground = () => {
             accumulatedTime -= fixedDeltaTime
         }
 
-        particles.draw(canvas, context)
+        const alpha = accumulatedTime / fixedDeltaTime
+
+        particles.draw(canvas, context, alpha)
 
         animationFrameId = requestAnimationFrame(animate)
     }
 
-    const onResize = () => {
+    const onResize = debounce(() => {
         if (!canvas) return
 
         canvas.width = window.innerWidth
         canvas.height = window.innerHeight
-    }
+    }, 200)
 
-    const onMouseMove = (event: MouseEvent) => {
+    const onMouseMove = throttle((event: MouseEvent) => {
         if (!canvas || particles.count < 1) return
 
         // Get mouse position relative to canvas
@@ -73,9 +76,9 @@ const InteractiveBackground = () => {
             event.clientX - rect.left,
             event.clientY - rect.top
         ) 
-    }
+    }, 1000 / 60)
 
-    const onTouchMove = (event: TouchEvent) => {
+    const onTouchMove = throttle((event: TouchEvent) => {
         if (!canvas || particles.count < 1) return
 
         // Get touch position relative to canvas
@@ -87,7 +90,7 @@ const InteractiveBackground = () => {
                 touch.clientY - rect.top
             )   
         }
-    }
+    }, 1000 / 50)
 
     onMount(() => {
         init()
@@ -96,6 +99,8 @@ const InteractiveBackground = () => {
         window.addEventListener('resize', onResize)
         window.addEventListener('mousemove', onMouseMove)
         window.addEventListener('touchmove', onTouchMove)
+
+        onResize()
     })
 
     onCleanup(() => {

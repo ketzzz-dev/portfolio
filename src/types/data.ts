@@ -1,5 +1,4 @@
 export interface Project {
-    // id: string
     title: string
     description: string
     link: string
@@ -15,11 +14,10 @@ export interface Project {
 }
 
 export interface Skill {
-    // id: string
     name: string
     icon?: string
     category: 'language' | 'engine' | 'tool'
-    proficiency: 1 | 2 | 3 | 4 | 5  // 1-5 rating
+    proficiency: 1 | 2 | 3 | 4 | 5
 }
 
 export interface SkillGroup {

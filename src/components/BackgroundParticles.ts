@@ -204,43 +204,54 @@ class BackgroundParticles {
         }
     }
 
-    public draw(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
+    public draw(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, alpha: number) {
         const tau = Math.PI * 2
         const linkDistanceSq = 160 * 160
+
+        // Interpolated positions
+        const ix = [...this.qx]
+        const iy = [...this.qy]
+
+        for (let i = 0; i < this.count; i++) {
+            ix[i] += (this.px[i] - this.qx[i]) * alpha
+            iy[i] += (this.py[i] - this.qy[i]) * alpha
+        }
 
         context.clearRect(0, 0, canvas.width, canvas.height)
         context.save()
 
+        // Links
         for (let i = 0; i < this.count; i++) {
-            const xi = this.px[i];
-            const yi = this.py[i];
-
+            const xi = ix[i];
+            const yi = iy[i];
+            
             // link particles that are nearby
             for (let j = i + 1; j < this.count; j++) {
-                const dx = this.px[j] - xi;
-                const dy = this.py[j] - yi;
-
+                const dx = ix[j] - xi;
+                const dy = iy[j] - yi;
+                
                 const distSq = dx * dx + dy * dy;
-
+                
                 if (distSq < linkDistanceSq) {
-                    const alpha = 1 - distSq / linkDistanceSq
-
-                    context.strokeStyle = `rgba(243, 139, 168, ${alpha})`
-
+                    const norm = 1 - distSq / linkDistanceSq
+                    
+                    context.lineWidth = norm
+                    context.strokeStyle = `rgba(243, 139, 168, ${norm})`
+                    
                     context.beginPath()
                     context.moveTo(xi, yi)
-                    context.lineTo(this.px[j], this.py[j])
-                    context.stroke()
+                    context.lineTo(ix[j], iy[j])
                     context.closePath()
+                    context.stroke()
                 }
             }
         }
-
+        
         context.fillStyle = 'rgb(243, 139, 168)'
 
         for (let i = 0; i < this.count; i++) {
             context.beginPath()
-            context.arc(this.px[i], this.py[i], this.r[i], 0, tau)
+            context.arc(ix[i], iy[i], this.r[i], 0, tau)
             context.closePath()
             context.fill()
         }
