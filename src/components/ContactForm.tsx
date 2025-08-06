@@ -27,22 +27,27 @@ const ContactForm: Component = () => {
         <div class='input-grid'>
             <input
                 type='text'
-                class='name input'
+                id='name'
+                class='input'
                 value={name()}
                 onInput={e => setName(e.currentTarget.value)}
                 placeholder='Your Name'
+                autocomplete='name'
                 required
             />
             <input
                 type='email'
-                class='email input'
+                id='email'
+                class='input'
                 value={email()}
                 onInput={e => setEmail(e.currentTarget.value)}
                 placeholder='Your Email'
+                autocomplete='email'
                 required
             />
             <textarea
-                class='message input'
+                id='message'
+                class='input'
                 value={message()}
                 onInput={e => setMessage(e.currentTarget.value)}
                 placeholder="What's on your mind?"
