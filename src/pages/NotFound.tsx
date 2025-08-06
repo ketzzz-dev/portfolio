@@ -1,6 +1,6 @@
 import { onCleanup, onMount } from "solid-js"
 import { useNavigate } from "@solidjs/router"
-import AButton from "../components/AButton"
+import LinkButton from "../components/LinkButton"
 import idkImage from '../assets/images/idk.png'
 import { Title } from "@solidjs/meta"
 
@@ -28,7 +28,7 @@ export default function NotFound() {
             <img src={idkImage} alt="404" />
 
             <p>Sending you back home before things get weird. Press the button if nothing happens.</p>
-            <AButton href="/">Go back</AButton>
+            <LinkButton href="/">Go back</LinkButton>
         </section>
     </>
 }

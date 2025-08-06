@@ -1,11 +1,12 @@
-import type { Component } from 'solid-js'
-import AButton from '../components/AButton'
+import { For, type Component } from 'solid-js'
+import LinkButton from '../components/LinkButton'
 import ProjectCard from '../components/ProjectCard'
 import SkillsList from '../components/SkillsList'
 import githubIcon from '../assets/icons/github.svg'
 import { featuredProjects } from '../data/projects'
 import { languages, engines, tools } from '../data/skills'
 import { Title } from '@solidjs/meta'
+import ContactForm from '../components/ContactForm'
 
 const Home: Component = () => {
     return <>
@@ -30,8 +31,8 @@ const Home: Component = () => {
             </p>
 
             <div class='links-container'>
-                <AButton icon={githubIcon} target='_blank' href='https://github.com/ketzzz-dev'>Visit my GitHub</AButton>
-                <AButton href='/projects'>Check out my Projects</AButton>
+                <LinkButton icon={githubIcon} target='_blank' href='https://github.com/ketzzz-dev'>Visit my GitHub</LinkButton>
+                <LinkButton href='/projects'>Check out my Projects</LinkButton>
             </div>
         </section>
 
@@ -39,7 +40,9 @@ const Home: Component = () => {
             <h2>Featured Projects</h2>
 
             <div class='projects-container'>
-                {featuredProjects.map((project) => <ProjectCard project={project} />)}
+                <For each={featuredProjects} >
+                    {project => <ProjectCard project={project} />}
+                </For>
             </div>
         </section>
 
@@ -54,12 +57,12 @@ const Home: Component = () => {
             </div>
         </section>
 
-        {/* <section class='contact'>
+        <section class='contact'>
             <h2>Contact Me</h2>
-            <p>Got questions, want to collaborate, or just feel like chatting? I'm always open to talk.</p>
+            <p>Got questions, want to collaborate, or just feel like chatting? I'm always open to talk!</p>
 
             <ContactForm />
-        </section> */}
+        </section>
     </>
 }
 

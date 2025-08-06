@@ -44,4 +44,9 @@
 	&:active {
 		background: rgba($color-button-active, 0.5);
 	}
+
+	&:disabled {
+		color: $color-text-muted;
+		background: rgba($color-button, 0.5);
+	}
 }

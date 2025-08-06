@@ -54,8 +54,13 @@ a {
     text-decoration: inherit;
 }
 
-button {
+button, input, textarea {
     font: inherit;
+    border: none;
+
+    &::placeholder {
+        color: $color-text-muted
+    }
 }
 
 @media (max-width: 768px) {

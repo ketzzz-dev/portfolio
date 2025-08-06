@@ -10,7 +10,7 @@ const InteractiveBackground = () => {
     let accumulatedTime = 0
     
     const particleCount = window.innerWidth < 768 ? 75 : 200
-    const fixedDeltaTime = window.innerWidth < 768 ? 1 / 50 : 1 / 75
+    const fixedDeltaTime = 1 / 50
     const maxDeltaTime = 1 / 12
 
     const init = () => {
@@ -106,13 +106,7 @@ const InteractiveBackground = () => {
         window.removeEventListener('touchmove', onTouchMove)
     })
 
-    return (
-        <canvas
-            ref={canvas}
-            class="interactive-background"
-            aria-hidden="true"
-        />
-    )
+    return <canvas ref={canvas} class='interactive-background' aria-hidden />
 }
 
 export default InteractiveBackground

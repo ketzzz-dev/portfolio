@@ -1,114 +1,59 @@
 import { createSignal, type Component } from 'solid-js'
+import type { ContactFormStatus } from '../types/component'
 import type { JSX } from 'solid-js/jsx-runtime'
 
 const ContactForm: Component = () => {
-    const [formData, setFormData] = createSignal({
-        name: '',
-        email: '',
-        message: ''
-    })
-    const [formStatus, setFormStatus] = createSignal<{
-        state: 'idle' | 'submitting' | 'success' | 'error'
-        message?: string
-    }>({ state: 'idle' })
+    const [name, setName] = createSignal('')
+    const [email, setEmail] = createSignal('')
+    const [message, setMessage] = createSignal('')
+    const [status, setStatus] = createSignal<ContactFormStatus>('idle')
 
-    const handleInput: JSX.EventHandler<HTMLInputElement | HTMLTextAreaElement, InputEvent> = (e) => {
-        const { name, value } = e.currentTarget
-        setFormData(prev => ({ ...prev, [name]: value }))
-    }
-
-    const handleSubmit = async (e: Event) => {
+    const onSubmit: JSX.EventHandler<HTMLFormElement, Event> = async (e) => {
         e.preventDefault()
-        setFormStatus({ state: 'submitting' })
+        setStatus('sending')
 
         try {
-            // Replace with your actual endpoint
-            const response = await fetch('https://api.yourdomain.com/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData())
-            })
-
-            if (!response.ok) throw new Error('Submission failed')
-
-            setFormStatus({
-                state: 'success',
-                message: 'Message sent successfully!'
-            })
-            setFormData({ name: '', email: '', message: '' })
-        } catch (error) {
-            setFormStatus({
-                state: 'error',
-                message: 'Failed to send message. Please try again later.'
-            })
+            // TODO: implement sending api
+        } catch (err) {
+            console.error(err)
+            setStatus('error')
         }
     }
 
-    return <form onSubmit={handleSubmit} class="contact-form">
-        <div class="form-group">
-            <label for="name">Name</label>
+    return <form
+        onSubmit={onSubmit}
+        class='contact-form'
+    >
+        <div class='input-grid'>
             <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData().name}
-                onInput={handleInput}
+                type='text'
+                class='name input'
+                value={name()}
+                onInput={e => setName(e.currentTarget.value)}
+                placeholder='Your Name'
                 required
-                disabled={formStatus().state === 'submitting'}
             />
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email</label>
             <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData().email}
-                onInput={handleInput}
+                type='email'
+                class='email input'
+                value={email()}
+                onInput={e => setEmail(e.currentTarget.value)}
+                placeholder='Your Email'
                 required
-                disabled={formStatus().state === 'submitting'}
             />
-        </div>
-
-        <div class="form-group">
-            <label for="message">Message</label>
             <textarea
-                id="message"
-                name="message"
-                rows={5}
-                value={formData().message}
-                onInput={handleInput}
+                class='message input'
+                value={message()}
+                onInput={e => setMessage(e.currentTarget.value)}
+                placeholder="What's on your mind?"
+                rows='5'
                 required
-                disabled={formStatus().state === 'submitting'}
             />
         </div>
 
-        <button
-            type="submit"
-            class="button"
-            disabled={formStatus().state === 'submitting'}
-        >
-            {formStatus().state === 'submitting' ? (
-                'Sending...'
-            ) : (
-                'Send Message'
-            )}
+        <button type='submit' class='button' disabled={status() === 'sending'}>
+            {status() === 'sending' ? 'Sending...' : 'Send Message'}
         </button>
-
-        {formStatus().state === 'success' && (
-            <div class="alert success">
-                {formStatus().message}
-            </div>
-        )}
-
-        {formStatus().state === 'error' && (
-            <div class="alert error">
-                {formStatus().message}
-            </div>
-        )}
     </form>
 }
 
