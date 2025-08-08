@@ -27,7 +27,7 @@ async function handler(req: VercelRequest, res: VercelResponse): Promise<VercelR
     try {
         const { error } = await resend.emails.send({
             from: 'Portfolio Contact <onboarding@resend.dev>',
-            to: '0hlowkey750@gmail.com',
+            to: process.env.EMAIL_ADDRESS,
             subject: `New message from ${name}`,
             text: `From: ${name} (${email})\n\n${message}`
         })

@@ -67,7 +67,7 @@ const ContactForm: Component = () => {
                 value={message()}
                 onInput={e => setMessage(e.currentTarget.value)}
                 placeholder="What's on your mind?"
-                rows='5'
+                rows={5}
                 required
             />
         </div>
@@ -78,11 +78,11 @@ const ContactForm: Component = () => {
             </button>
 
             <Switch>
-                <Match when={status() == 'success'}>
-                    <p class='success-message'>Message sent successfully!</p>
+                <Match when={status() === 'success'}>
+                    <p class='success-message'>Thanks for reaching out! Your message is on its way to my spam.</p>
                 </Match>
                 <Match when={status() === 'error'}>
-                    <p class='error-message'>Failed to send. Please try again.</p>
+                    <p class='error-message'>Oops, something went wrong while sending your message. Please try again in a moment.</p>
                 </Match>
             </Switch>
         </div>
