@@ -1,4 +1,4 @@
-import { createSignal, type Component } from 'solid-js'
+import { createSignal, Match, Switch, type Component } from 'solid-js'
 import type { ContactFormStatus } from '../types/component'
 import type { JSX } from 'solid-js/jsx-runtime'
 
@@ -16,7 +16,7 @@ const ContactForm: Component = () => {
             const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                
+
                 body: JSON.stringify({
                     name: name(),
                     email: email(),
@@ -72,9 +72,20 @@ const ContactForm: Component = () => {
             />
         </div>
 
-        <button type='submit' class='button' disabled={status() === 'sending'}>
-            {status() === 'sending' ? 'Sending...' : 'Send Message'}
-        </button>
+        <div class='submit-and-status'>
+            <button type='submit' class='button' disabled={status() === 'sending'}>
+                {status() === 'sending' ? 'Sending...' : 'Send Message'}
+            </button>
+
+            <Switch>
+                <Match when={status() == 'success'}>
+                    <p class='success-message'>Message sent successfully!</p>
+                </Match>
+                <Match when={status() === 'error'}>
+                    <p class='error-message'>Failed to send. Please try again.</p>
+                </Match>
+            </Switch>
+        </div>
     </form>
 }
 

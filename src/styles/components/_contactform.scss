@@ -29,6 +29,22 @@
             resize: none;
         }
     }
+
+    .submit-and-status {
+        display: flex;
+
+        flex-direction: row;
+        justify-content: flex-start;
+
+        p {
+            margin: 0;
+            padding: 0.5rem 1rem;
+
+            &.error-message {
+                color: $color-accent-primary;
+            }
+        }
+    }
 }
 
 @media (max-width: 768px) {
