@@ -13,7 +13,23 @@ const ContactForm: Component = () => {
         setStatus('sending')
 
         try {
-            // TODO: implement sending api
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                
+                body: JSON.stringify({
+                    name: name(),
+                    email: email(),
+                    message: message(),
+                }),
+            })
+
+            if (!response.ok) throw new Error('Failed to send');
+
+            setName('')
+            setEmail('');
+            setMessage('')
+            setStatus('success')
         } catch (err) {
             console.error(err)
             setStatus('error')

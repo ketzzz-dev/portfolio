@@ -7,7 +7,7 @@ import { Title } from "@solidjs/meta"
 export default function NotFound() {
     const navigate = useNavigate()
 
-    let timeout: number
+    let timeout: ReturnType<typeof setTimeout>
 
     onMount(() => {
         timeout = setTimeout(() => {

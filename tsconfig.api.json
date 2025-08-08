@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.api.tsbuildinfo",
+        "target": "ES2020",
+        "lib": [
+            "ES2020"
+        ],
+        "module": "ESNEXT",
+        "skipLibCheck": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "strict": true,
+        "types": [
+            "node"
+        ],
+        "noEmit": true
+    },
+    "include": [
+        "api",
+        "env.d.ts"
+    ]
+}

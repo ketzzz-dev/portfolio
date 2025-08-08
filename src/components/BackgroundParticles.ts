@@ -153,7 +153,7 @@ class BackgroundParticles {
         // Integration
         for (let i = 0; i < this.count; i++) {
             // Drag
-            let speedSq = this.vx[i] * this.vx[i] + this.vy[i] * this.vy[i]
+            let speedSq = this.vx[i] * this.vx[i] + this.vy[i] * this.vy[i] + 1e-6
 
             // Calculate drag force magnitude
             const r = this.r[i]
@@ -161,7 +161,7 @@ class BackgroundParticles {
             const dragForce = dragCoefficient * speedSq * area
 
             // Direction of drag (opposite to velocity)
-            const speed = Math.sqrt(speedSq) + 1e-6
+            const speed = Math.sqrt(speedSq)
             const inverseSpeed = 1 / speed
 
             const dx = this.vx[i] * inverseSpeed
