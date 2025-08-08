@@ -79,10 +79,10 @@ const ContactForm: Component = () => {
 
             <Switch>
                 <Match when={status() === 'success'}>
-                    <p class='success-message'>Thanks for reaching out! Your message is on its way to my spam.</p>
+                    <p class='success-message'>Thanks for reaching out! Your message is on its way to my inbox.</p>
                 </Match>
                 <Match when={status() === 'error'}>
-                    <p class='error-message'>Oops, something went wrong while sending your message. Please try again in a moment.</p>
+                    <p class='error-message'>Oops, something went wrong. Please try again in a moment.</p>
                 </Match>
             </Switch>
         </div>

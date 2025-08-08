@@ -29,7 +29,8 @@ async function handler(req: VercelRequest, res: VercelResponse): Promise<VercelR
             from: 'Portfolio Contact <onboarding@resend.dev>',
             to: process.env.EMAIL_ADDRESS,
             subject: `New message from ${name}`,
-            text: `From: ${name} (${email})\n\n${message}`
+            text: `From: ${name} (${email})\n\n${message}`,
+            replyTo: email
         })
 
         if (error) throw new Error(error.message)
