@@ -35,6 +35,12 @@ class BackgroundParticles {
         const cellWidth = canvasWidth / cols
         const cellHeight = canvasHeight / rows
 
+        const jitter = 0.5 // Jitter factor to add randomness
+        const maxVelocity = 100 // Maximum initial velocity
+        const minRadius = 1 // Minimum radius for particles
+        const maxRadius = 5 // Maximum radius for particles
+        const sizeToMassRatio = 5 // Arbitrary ratio for size to mass
+
         let i = 0
 
         for (let row = 0; row < rows; row++) {
@@ -42,17 +48,19 @@ class BackgroundParticles {
                 if (i >= this.count) break
 
                 // Jitter factor (random offset inside cell)
-                const jx = (Math.random() - 0.5) * cellWidth * 0.75
-                const jy = (Math.random() - 0.5) * cellHeight * 0.75
+                const jx = (Math.random() - 0.5) * cellWidth * jitter
+                const jy = (Math.random() - 0.5) * cellHeight * jitter
 
-                const px = col * cellWidth + cellWidth / 2 + jx
-                const py = row * cellHeight + cellHeight / 2 + jy
+                const px = col * cellWidth + 0.5 * cellWidth + jx
+                const py = row * cellHeight + 0.5 * cellHeight + jy
 
-                let vx = (Math.random() - 0.5) * 100
-                let vy = (Math.random() - 0.5) * 100
+                const theta = Math.random() * Math.PI * 2 // Random angle for velocity
 
-                let r = 1 + Math.random() * 4
-                let m = r * r * 75 // Arbitrary size to mass ratio
+                const vx = Math.cos(theta) * maxVelocity
+                const vy = Math.sin(theta) * maxVelocity
+
+                const r = minRadius + Math.random() * (maxRadius - minRadius) // Random radius between min and max
+                const m = r * r * sizeToMassRatio
 
                 this.px.push(px)
                 this.py.push(py)

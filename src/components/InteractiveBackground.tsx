@@ -90,7 +90,7 @@ const InteractiveBackground = () => {
                 touch.clientY - rect.top
             )   
         }
-    }, 1000 / 50)
+    }, 1000 / 40)
 
     onMount(() => {
         init()
