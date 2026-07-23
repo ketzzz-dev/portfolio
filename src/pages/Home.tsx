@@ -17,7 +17,7 @@ const Home: Component = () => {
 
             <p>
                 {'\t'}I'm also known online as <strong>Ketzzz</strong>,
-                and I'm an 18-year-old Computer Science student with over 5 years of programming experience and a strong passion for game development.
+                and I'm a 19-year-old Computer Science student with over 5 years of programming experience and a strong passion for game development.
             </p>
             <p>
                 {'\t'}I primarily work with <strong>Godot</strong> and <strong>Unity</strong>,
